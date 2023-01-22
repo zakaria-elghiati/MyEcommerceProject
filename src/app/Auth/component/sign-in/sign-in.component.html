@@ -1,0 +1,45 @@
+<section class="h-100  w-75 h-custom" style="background-color: #8fc4b7;margin-top: 50px;border-radius: 30px;margin-left: 13%">
+  <div class="container w-100 py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 displayTable">
+      <div class="col-lg-8 col-xl-6 displayTableCell" style="border-radius: 30px">
+        <div class="card rounded-3 authBlock" >
+          <div class="card-body p-4 p-md-5">
+            <form class="px-md-2">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Sign In</h3>
+              <div class="form-outline mb-4">
+                <label class="form-label" >Email</label>
+                <input type="text" class="form-control" placeholder="Username" #userName required>
+              </div>
+              <div class="form-outline mb-4">
+                <label class="form-label" >Password</label>
+                <input type="password" class="form-control" placeholder="Password" #userPassword required>
+              </div>
+              <!-- Calling SignIn Api from AuthService -->
+              <div class="formGroup">
+                <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)"
+                       style="background-color:#8fc4b7;border-radius: 15px;margin-top: 20px;margin-left: 40% "
+                >
+              </div>
+              <div class="formGroup" style="margin-top: 20px">
+                <span class="or"><span class="orInner" style="margin-left: 45% ">Or</span></span>
+              </div>
+              <!-- Calling GoogleAuth Api from AuthService -->
+              <div class="formGroup">
+                <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()" style="background-color:#8fc4b7;border-radius: 15px;margin-top: 20px;margin-left: 30% ">
+                  <i class="fab fa-google-plus-g"></i>
+                  Log in with Google
+                </button>
+              </div>
+              <div class="forgotPassword" style="margin-top: 20px">
+                <span  routerLink="/forgot-password" style="margin-left: 35% ">Forgot Password?</span>
+              </div>
+            </form>
+            </div>
+            <div class="redirectToLogin" style="margin-left: 30%;margin-bottom: 40px">
+              <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>

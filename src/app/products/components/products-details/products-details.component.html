@@ -1,0 +1,67 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>eCommerce Product Detail</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container" *ngIf="!loading">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active " id="pic-1" ><img src="{{data.images[0]}}" /></div>
+          </div>
+          <ul class="preview-thumbnail nav nav-tabs">
+            <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{data.images[1]}}" /></a></li>
+            <li><a  data-toggle="tab"><img src="{{data.images[2]}}" /></a></li>
+            <li><a  data-toggle="tab"><img src="{{data.images[3]}}" /></a></li>
+          </ul>
+
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title">{{data.title}}</h3>
+          <p class="product-description">{{data.description}}</p>
+          <h4 class="price">Brand : <span>{{data.brand}}</span></h4>
+          <h4 class="category">Category : <span>{{data.category}}</span></h4>
+          <h4 class="discountPercentage">Discount Percentage : <span>{{data.discountPercentage}}</span></h4>
+          <h4 class="stock">In stock : <span>{{data.stock}}</span></h4>
+
+
+          <h4 class="price">current price: <span>{{data.price}}</span></h4>
+
+          <div  class="action" *ngIf="estDisponible();else nonDisponible">
+            <h6 [ngStyle]="{color:getColor()}"> In Stock</h6><br>
+            <div class="quantity">
+              <h4>Quantity</h4>
+              <input type="number" class="form-control" [(ngModel)]="quantite">
+            </div>
+            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+          </div>
+          <ng-template #nonDisponible>
+            <span [ngStyle]="{color:getColor()}"> Out of stock</span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center w-100" *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+</body>
+</html>

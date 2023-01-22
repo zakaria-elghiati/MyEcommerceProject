@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+<div class="container-lg" >
+  <div class="row">
+    <div  style="margin-top: 10px; margin-left: 70%">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 300px;"  placeholder="Search Film" [(ngModel)]="searchFilm">
+      <button class="btn btn-outline-success " type="submit" style="width: 100px;margin-left: 5.2cm;margin-top: 3px" (click)="searchFor(searchFilm)">Search</button>
+    </div>
+    <div id="carouselId">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="height: 200px">
+        <div class="carousel-inner" style="border-radius: 20px;" >
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="https://www.chainalytics.com/wp-content/uploads/2019/11/iStock-1023612090-1920x500.jpg" class="d-block w-100" style="height: 200px" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://sandlerjewelry.com/wp-content/uploads/2014/05/jewelry-store-columbia-sc.jpg" class="d-block w-100" style="height: 200px" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://autoretails.com/wp-content/uploads/2021/05/Autoretails-Warehouse-1920x500-1.jpg" class="d-block w-100" style="height: 200px" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="col-md-2">
+      <div class="panel panel-default">
+        <app-select [data]="categories" [title]="'Categories'" (selectedValue)="filterCategory($event)"></app-select>
+      </div>
+
+    </div>
+    <div class="col-md-10">
+      <div class="row" *ngIf="!loading">
+        <div class="col-md-4 col-sm-12" *ngFor="let item of products">
+          <app-product-item [data]="item"  (item)="addToCart($event)"></app-product-item>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="text-center w-100" *ngIf="loading" >
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

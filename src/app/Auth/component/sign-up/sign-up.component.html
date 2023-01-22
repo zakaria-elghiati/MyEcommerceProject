@@ -1,0 +1,64 @@
+<section class="h-100  w-75 h-custom" style="background-color: #8fc4b7;margin-top: 50px;border-radius: 30px;margin-left: 13%">
+  <div class="container w-100 py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 displayTable">
+      <div class="col-lg-8 col-xl-6 displayTableCell" style="border-radius: 30px">
+        <div class="card rounded-3 authBlock" >
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Sign Up</h3>
+              <form class="px-md-2">
+                <div class="form-outline mb-4">
+                  <label class="form-label" >Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email Address"
+                    #userEmail
+                    required
+                  />
+                </div>
+                <div class="form-outline mb-4">
+                  <label class="form-label" >Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    #userPwd
+                    required
+                  />
+                </div>
+                <div class="formGroup">
+                  <input
+                    type="button"
+                    class="btn btnPrimary"
+                    value="Sign Up"
+                    (click)="authService.SignUp(userEmail.value, userPwd.value)"
+                    style="background-color:#8fc4b7;border-radius: 15px;margin-top: 20px;margin-left: 40% "
+                  />
+                </div>
+                <div class="formGroup "style="margin-top: 20px">
+                  <span class="or"><span class="orInner" style="margin-left: 45% ">Or</span></span>
+                </div>
+                <!-- Continue with Google -->
+                <div class="formGroup">
+                  <button
+                    type="button"
+                    class="btn googleBtn"
+                    (click)="authService.GoogleAuth()" style="background-color:#8fc4b7;border-radius: 15px;margin-top: 20px;margin-left: 30% "
+                  >
+                    <i class="fab fa-google-plus-g"></i>
+                    Continue with Google
+                  </button>
+                </div>
+              </form>
+          </div>
+          <div class="redirectToLogin "style="margin-left: 30%;margin-bottom: 40px">
+            <span
+            >Already have an account?
+              <span class="redirect" routerLink="/sign-in">Log In</span></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
